@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 1edcabf0a31e58e48a8af32fadee8043
+timeCreated: 1480767782
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: bottomTeeth_group3
+    100002: group3_L_Eye
+    100004: group3_L_foot_claw1
+    100006: group3_L_foot_claw2
+    100008: group3_L_foot_claw3
+    100010: group3_L_foot_DewClaw
+    100012: group3_L_handClaw
+    100014: group3_L_handClaw1
+    100016: group3_L_innerBlack
+    100018: group3_L_outerClear
+    100020: group3_R_Eye
+    100022: group3_R_foot_claw1
+    100024: group3_R_foot_claw2
+    100026: group3_R_foot_claw3
+    100028: group3_R_foot_DewClaw
+    100030: group3_R_handClaw2
+    100032: group3_R_handClaw3
+    100034: group3_R_innerBlack
+    100036: group3_R_outerClear
+    100038: group3_topTeeth
+    100040: group3_TrexSkin
+    100042: //RootNode
+    400000: bottomTeeth_group3
+    400002: group3_L_Eye
+    400004: group3_L_foot_claw1
+    400006: group3_L_foot_claw2
+    400008: group3_L_foot_claw3
+    400010: group3_L_foot_DewClaw
+    400012: group3_L_handClaw
+    400014: group3_L_handClaw1
+    400016: group3_L_innerBlack
+    400018: group3_L_outerClear
+    400020: group3_R_Eye
+    400022: group3_R_foot_claw1
+    400024: group3_R_foot_claw2
+    400026: group3_R_foot_claw3
+    400028: group3_R_foot_DewClaw
+    400030: group3_R_handClaw2
+    400032: group3_R_handClaw3
+    400034: group3_R_innerBlack
+    400036: group3_R_outerClear
+    400038: group3_topTeeth
+    400040: group3_TrexSkin
+    400042: //RootNode
+    2300000: bottomTeeth_group3
+    2300002: group3_L_Eye
+    2300004: group3_L_foot_claw1
+    2300006: group3_L_foot_claw2
+    2300008: group3_L_foot_claw3
+    2300010: group3_L_foot_DewClaw
+    2300012: group3_L_handClaw
+    2300014: group3_L_handClaw1
+    2300016: group3_L_innerBlack
+    2300018: group3_L_outerClear
+    2300020: group3_R_Eye
+    2300022: group3_R_foot_claw1
+    2300024: group3_R_foot_claw2
+    2300026: group3_R_foot_claw3
+    2300028: group3_R_foot_DewClaw
+    2300030: group3_R_handClaw2
+    2300032: group3_R_handClaw3
+    2300034: group3_R_innerBlack
+    2300036: group3_R_outerClear
+    2300038: group3_topTeeth
+    2300040: group3_TrexSkin
+    3300000: bottomTeeth_group3
+    3300002: group3_L_Eye
+    3300004: group3_L_foot_claw1
+    3300006: group3_L_foot_claw2
+    3300008: group3_L_foot_claw3
+    3300010: group3_L_foot_DewClaw
+    3300012: group3_L_handClaw
+    3300014: group3_L_handClaw1
+    3300016: group3_L_innerBlack
+    3300018: group3_L_outerClear
+    3300020: group3_R_Eye
+    3300022: group3_R_foot_claw1
+    3300024: group3_R_foot_claw2
+    3300026: group3_R_foot_claw3
+    3300028: group3_R_foot_DewClaw
+    3300030: group3_R_handClaw2
+    3300032: group3_R_handClaw3
+    3300034: group3_R_innerBlack
+    3300036: group3_R_outerClear
+    3300038: group3_topTeeth
+    3300040: group3_TrexSkin
+    4300000: bottomTeeth_group3
+    4300002: group3_L_Eye
+    4300004: group3_L_foot_claw1
+    4300006: group3_L_foot_claw2
+    4300008: group3_L_foot_claw3
+    4300010: group3_L_foot_DewClaw
+    4300012: group3_L_handClaw
+    4300014: group3_L_handClaw1
+    4300016: group3_L_innerBlack
+    4300018: group3_L_outerClear
+    4300020: group3_R_Eye
+    4300022: group3_R_foot_claw1
+    4300024: group3_R_foot_claw2
+    4300026: group3_R_foot_claw3
+    4300028: group3_R_foot_DewClaw
+    4300030: group3_R_handClaw2
+    4300032: group3_R_handClaw3
+    4300034: group3_R_innerBlack
+    4300036: group3_R_outerClear
+    4300038: group3_topTeeth
+    4300040: group3_TrexSkin
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

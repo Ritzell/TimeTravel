@@ -1,0 +1,23 @@
+print "Starting maya loading and fbx conversion \n";
+	
+if (`file -q -exists "/Users/Yuji/Desktop/TimeTravelVR/Assets/gear 1/gear.mb"`)
+{		
+	file -o "/Users/Yuji/Desktop/TimeTravelVR/Assets/gear 1/gear.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "/Users/Yuji/Desktop/TimeTravelVR/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+
+system ("rm \"/Users/Yuji/Desktop/TimeTravelVR/Temp/CommandPipe\"");
+
+$donepipeKill = `fopen "/Users/Yuji/Desktop/TimeTravelVR/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;
