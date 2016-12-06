@@ -11,6 +11,7 @@ public class StageGenerator : MonoBehaviour {
 	private GameObject player;
 
 	private int nowStage = 0;
+	private int minStage = 0;
 
 	void Start(){
 		player = FindObjectOfType<Player> ().gameObject;
@@ -18,15 +19,16 @@ public class StageGenerator : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float RearDistance = nowStage - GeneratorRange >= 0 ? Mathf.Abs(Vector3.Distance (Stages [nowStage - 2].transform.position, player.transform.position)) : 0;
-		float ForwardDistance = nowStage + GeneratorRange <= Stages.Length - 1 ? Mathf.Abs (Vector3.Distance (Stages [nowStage + 2].transform.position, player.transform.position)) : Mathf.Infinity;
+		float RearDistance = minStage <= Stages.Length - 1 ? Mathf.Abs(Vector3.Distance (Stages [minStage].transform.position, player.transform.position)) : 0;
+		float ForwardDistance = nowStage + GeneratorRange <= Stages.Length - 1 ? Mathf.Abs (Vector3.Distance (Stages [nowStage + GeneratorRange].transform.position, player.transform.position)) : Mathf.Infinity;
 
 		if (ForwardDistance < LoadDistance) {
 			Stages [nowStage+GeneratorRange].SetActive (true);
 			nowStage++;
 		}
 		if (RearDistance > LoadDistance) {
-			Stages [nowStage-GeneratorRange].SetActive (false);
+			Stages [minStage].SetActive (false);
+			minStage++;
 		}
 	}
 }
