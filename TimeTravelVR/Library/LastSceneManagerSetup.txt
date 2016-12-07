@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Tram.unity
+- path: Assets/Entrance.unity
   isLoaded: 1
   isActive: 1

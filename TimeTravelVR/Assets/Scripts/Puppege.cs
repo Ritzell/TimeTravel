@@ -12,6 +12,8 @@ public class Puppege : MonoBehaviour {
 
     [SerializeField]
 	private GameObject Player;
+	[SerializeField]
+	private GameObject PlayerCamera;
     
 	private AudioSource audiosource;
 	public Texture[] Expressions;
@@ -51,7 +53,7 @@ public class Puppege : MonoBehaviour {
 			yield return null;
 		}
 		audiosource.Stop ();
-        coroutines[(int)CoroutineNumber.naturalLookAt] = StartCoroutine(NaturalLookAt(0.5f, Player));
+		coroutines[(int)CoroutineNumber.naturalLookAt] = StartCoroutine(NaturalLookAt(0.5f, PlayerCamera));
         yield return null;
 	}
 
@@ -101,7 +103,7 @@ public class Puppege : MonoBehaviour {
 
 	public void Resurrection(){
         coroutines[(int)CoroutineNumber.excitement] = StartCoroutine(excitement());
-        coroutines[(int)CoroutineNumber.naturalLookAt] = StartCoroutine(NaturalLookAt(0.5f, Player));
+		coroutines[(int)CoroutineNumber.naturalLookAt] = StartCoroutine(NaturalLookAt(0.5f, PlayerCamera));
         coroutines[(int)CoroutineNumber.UpdateEyeLine] = StartCoroutine(UpdateEyeLine());
 
     }
@@ -119,7 +121,7 @@ public class Puppege : MonoBehaviour {
         while (true)
         {
             EyeLine = Camera.main.WorldToViewportPoint(transform.position);
-            if(EyeLine.z > -0.1f && EyeLine.x >= 0.3f && EyeLine.y >= 0.3f && EyeLine.x <= 0.7f && EyeLine.y <= 0.7f)
+            if(EyeLine.z > -0.1f && EyeLine.x >= 0.4f && EyeLine.y >= 0.4f && EyeLine.x <= 0.6f && EyeLine.y <= 0.6f)
             {
                 WatchingMyself = true;
             }else

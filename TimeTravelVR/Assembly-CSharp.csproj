@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\InputVRController.cs" />
      <Compile Include="Assets\Scripts\EntranceRoom.cs" />
      <Compile Include="Assets\Scripts\FanPitch.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -53,11 +54,13 @@
      <Compile Include="Assets\Scripts\Puppege.cs" />
      <Compile Include="Assets\Scripts\Rail.cs" />
      <Compile Include="Assets\Scripts\Soldier.cs" />
+     <Compile Include="Assets\Scripts\StageGenerator.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
      <Compile Include="Assets\Scripts\StoryObject.cs" />
      <Compile Include="Assets\Scripts\TimeMachine.cs" />
      <Compile Include="Assets\Scripts\Tram.cs" />
-     <Compile Include="Assets\StageGenerator.cs" />
+     <Compile Include="Assets\Scripts\VRHand.cs" />
+     <Compile Include="Assets\Scripts\VRPlayer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />

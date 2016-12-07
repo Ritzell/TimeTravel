@@ -16,6 +16,8 @@ public enum Expression{
 public class Player : MonoBehaviour {
 	[SerializeField]
 	private GameObject cameraOB;
+	[SerializeField]
+	private bool isVR = true;
 	public static Expression PlayerState;
 	private static BloomAndFlares CameraBloom;
 
@@ -31,11 +33,14 @@ public class Player : MonoBehaviour {
 	public List<GameObject> interactionItem;
     
 	void Start(){
-		DontDestroyOnLoad (transform.parent.gameObject);
+		DontDestroyOnLoad (gameObject);
 		CameraBloom = GetComponent<BloomAndFlares> ();
 		StartCoroutine (InputPlayerState ());
 		StartCoroutine (Interaction ());
-        //Application.targetFrameRate = 300;
+        
+		if (isVR) {
+			StartCoroutine (VRMove(5));
+		}
 	}
 
 	private IEnumerator InputPlayerState(){
@@ -80,6 +85,7 @@ public class Player : MonoBehaviour {
 					}
 				}
 			}
+			yield return null;
 
 			if (interact) {
 				if (!interact.GetComponent<Puppege> ()) {
@@ -87,7 +93,7 @@ public class Player : MonoBehaviour {
 						m.SetColor ("_EmissionColor", new Color (0.5f, 0.5f, 0.5f));
 					}
 				}
-				if (Input.GetKeyDown (KeyCode.E)) {
+				if ((!isVR && Input.GetKeyDown (KeyCode.E)) || (isVR && InputVRController.GetPress(InputPress.PressTrigger,HandType.Both))) {
 					if (interact == Story.objective) {
 						interact.GetComponent<StoryObject> ().StoryCoroutine.MoveNext ();
 						Story.NextSequential ().MoveNext ();
@@ -96,21 +102,26 @@ public class Player : MonoBehaviour {
 					}
 				}
 			}
-			/*var EyeLine = Camera.main.WorldToViewportPoint (puppege.transform.position);
-			if (EyeLine.z > -0.1f &&EyeLine.z < 3f &&  EyeLine.x >= 0.3f && EyeLine.y >= 0.3f && EyeLine.x <= 0.7f && EyeLine.y <= 0.7f && Input.GetKeyDown(KeyCode.E)) {
-				//プレイヤーがバトラーを見てる
-				//fan.StartCoroutine(fan.SpeedUpMotor(-4000,20));
-				ControlOut ();
-				//yield return PuppegeScript.StartCoroutine(PuppegeScript.RequestSightAnim());
-				//yield return new WaitForSeconds (1.5f);
-				SetControl ();
-				yield return null;
-				FanPitch fan = FindObjectOfType<FanPitch> ();
-				yield return fan.StartCoroutine(fan.SpeedUpMotor(-10000,20));
-				TimeMachine machine = FindObjectOfType<TimeMachine> ();
-				machine.StartCoroutine (machine.FlashLoadScene(Scenes.medieval));
-				yield break;
-			}*/
+			yield return null;
+		}
+	}
+
+
+	public IEnumerator VRMove(float speed){
+		InputVRController controllers = FindObjectOfType<InputVRController> ();
+		while (true) {
+			float rightSpeed = InputVRController.GetAnalogPressTrigger (HandType.right);
+			float leftSpeed = InputVRController.GetAnalogPressTrigger (HandType.left);
+		
+			if(rightSpeed >= 0.1f){
+				Transform rightHand = controllers.Controllers [(int)HandType.right].transform;
+				transform.Translate (rightHand.TransformDirection(Vector3.forward)*speed*rightSpeed*Time.deltaTime);
+			}
+
+			if(leftSpeed >= 0.1f){
+				Transform leftHand = controllers.Controllers [(int)HandType.left].transform;
+				transform.Translate (leftHand.TransformDirection(Vector3.forward)*speed*leftSpeed*Time.deltaTime);
+			}
 			yield return null;
 		}
 	}

@@ -6,7 +6,7 @@ public class EntranceRoom : MonoBehaviour {
 	private GameObject smoke = null;
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(AirLeak(0.1f,3.5f));
+        StartCoroutine(AirLeak(1f,3.5f));
 	}
 	
 	private IEnumerator AirLeak(float MinDelay,float MaxDelay)
