@@ -179,6 +179,5 @@ public class InputVRController : MonoBehaviour {
 				yield return null;
 			}
 		}
-
 	}
 }
