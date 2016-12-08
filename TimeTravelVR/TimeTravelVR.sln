@@ -9,8 +9,6 @@ Project("{60172695-BC7E-B391-678F-E84BDF145A3A}") = "TimeTravelVR", "Assembly-CS
 EndProject
 Project("{60172695-BC7E-B391-678F-E84BDF145A3A}") = "TimeTravelVR", "Assembly-CSharp-Editor.csproj", "{241643CA-F0C8-F26C-5DF3-37D568053CE0}"
 EndProject
-Project("{60172695-BC7E-B391-678F-E84BDF145A3A}") = "TimeTravelVR", "Assembly-UnityScript.unityproj", "{A5F299E5-A58A-44D3-F574-9678E0CC0A40}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +31,6 @@ Global
 		{241643CA-F0C8-F26C-5DF3-37D568053CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{241643CA-F0C8-F26C-5DF3-37D568053CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{241643CA-F0C8-F26C-5DF3-37D568053CE0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5F299E5-A58A-44D3-F574-9678E0CC0A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5F299E5-A58A-44D3-F574-9678E0CC0A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5F299E5-A58A-44D3-F574-9678E0CC0A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5F299E5-A58A-44D3-F574-9678E0CC0A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
