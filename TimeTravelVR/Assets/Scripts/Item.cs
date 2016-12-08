@@ -21,8 +21,12 @@ public class Item : MonoBehaviour {
 	[SerializeField]
 	private bool LockRotateZ = false;
 
-	public ItemType type;
+	[SerializeField]
+	private float LimitMaxAngle = 90;
+	[SerializeField]
+	private float LimitMinAngle = 0;
 
+	public ItemType type;
 	public Vector3 CarryPosition;
 	private Player player;
 	private Coroutine coroutine;
@@ -52,7 +56,9 @@ public class Item : MonoBehaviour {
 	}
 
 	public void Release(){
+		if(type == ItemType.carry){
 		transform.parent = null;
+		}
 		StopCoroutine (coroutine);
 	}
 
@@ -76,10 +82,11 @@ public class Item : MonoBehaviour {
 	public void Rotate(Transform target){
 		//回転角度を保存
 		Vector3 origin = transform.eulerAngles;
-		transform.LookAt (target);
-		transform.eulerAngles = new Vector3 (	LockRotateX ? origin.x : transform.eulerAngles.x ,
-												LockRotateY ? origin.y : transform.eulerAngles.y,
-												LockRotateZ ? origin.z : transform.eulerAngles.z);
+		transform.LookAt (target,transform.up);
+		transform.eulerAngles = new Vector3 (	LockRotateX || transform.eulerAngles.x >= LimitMaxAngle ||  transform.eulerAngles.x <= LimitMinAngle ? origin.x : transform.eulerAngles.x ,
+												LockRotateY || transform.eulerAngles.y >= LimitMaxAngle ||  transform.eulerAngles.y <= LimitMinAngle ? origin.y : transform.eulerAngles.y,
+												LockRotateZ || transform.eulerAngles.z >= LimitMaxAngle ||  transform.eulerAngles.z <= LimitMinAngle ? origin.z : transform.eulerAngles.z);
+
 	}
 
 	void OnDestroy(){

@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour {
 	public void GetItem(){
 		if (TouchObject) {
 			TouchObject.GetComponent<Item> ().Interact (gameObject);
+			Debug.Log (TouchObject);
 			InteractItem = TouchObject;
 		}
 	}
