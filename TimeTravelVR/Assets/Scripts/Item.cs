@@ -25,6 +25,7 @@ public class Item : MonoBehaviour {
 
 	public Vector3 CarryPosition;
 	private Player player;
+	private Coroutine coroutine;
 
 	// Use this for initialization
 	void Awake () {
@@ -43,17 +44,30 @@ public class Item : MonoBehaviour {
 			transform.localPosition = CarryPosition;
 			break;
 		case ItemType.controll:
-			transform.parent = ob.transform;
+			coroutine = StartCoroutine (UpdateTransform(ob));
 			break;
 		default :
 			break;
 		}
 	}
 
+	public void Release(){
+		transform.parent = null;
+		StopCoroutine (coroutine);
+	}
+
+	private IEnumerator UpdateTransform(GameObject parent){
+		while (true) {
+			Move (parent.transform.position);
+			Rotate (parent.transform);
+			yield return null;
+		}
+	}
+
 	public void Move(Vector3 target){
 		//座標を保存
 		Vector3 origin = transform.position;
-		transform.Translate (origin.x-target.x,origin.y - target.y,origin.z - target.z);
+		transform.Translate (target.x - origin.x, target.y - origin.y, target.z-origin.z);
 		transform.position = new Vector3 (	LockPositionX ? origin.x : transform.position.x,
 											LockPositionY  ? origin.y : transform.position.y,
 											LockPositionZ ? origin.z : transform.position.z);

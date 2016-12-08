@@ -26,7 +26,7 @@ public class InputVRController : MonoBehaviour {
 
 
 
-	void Start()
+	void Awake()
 	{
 		trackedObject[0] = Controllers[0].GetComponent<SteamVR_TrackedObject>();
 		trackedObject[1] = Controllers[1].GetComponent<SteamVR_TrackedObject>();
@@ -95,12 +95,14 @@ public class InputVRController : MonoBehaviour {
 
 
 
-	public static bool GetUp(InputPress input, HandType type)
+	public static bool GetPressUp(InputPress input, HandType type)
 	{
 		SteamVR_Controller.Device device;
 		device = SteamVR_Controller.Input((int)trackedObject[(int)type].index);
 		switch (input)
 		{
+		case InputPress.PressTrigger:
+			return device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger);
 		case InputPress.UpMenu:
 			return device.GetPressUp(SteamVR_Controller.ButtonMask.ApplicationMenu);
 		default:
@@ -121,7 +123,7 @@ public class InputVRController : MonoBehaviour {
 		return false;
 	}
 
-	public static bool GetUp(InputPress input)
+	public static bool GetPressUp(InputPress input)
 	{
 		SteamVR_Controller.Device device, device2;
 		device = SteamVR_Controller.Input((int)trackedObject[0].index);

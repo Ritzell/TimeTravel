@@ -13,6 +13,8 @@ public class Controller : MonoBehaviour {
 		}
 	}
 
+	private GameObject InteractItem;
+
 
 	void OnTriggerEnter(Collider col){
 		TouchObject = col.gameObject;
@@ -23,9 +25,17 @@ public class Controller : MonoBehaviour {
 
 	}
 
-	void GetItem(){
+	public void GetItem(){
 		if (TouchObject) {
-			TouchObject.transform.parent = gameObject.transform;
+			TouchObject.GetComponent<Item> ().Interact (gameObject);
+			InteractItem = TouchObject;
+		}
+	}
+
+	public void ReleaseItem(){
+		if (InteractItem) {
+			InteractItem.GetComponent<Item> ().Release ();
+			InteractItem = null;
 		}
 	}
 }

@@ -85,21 +85,27 @@ public class Player : MonoBehaviour {
 					}
 				}
 			}
-			yield return null;
-
-			if (interact) {
-				if (!interact.GetComponent<Puppege> ()) {
-					foreach (Material m in interact.GetComponent<Renderer> ().materials) {
-						m.SetColor ("_EmissionColor", new Color (0.5f, 0.5f, 0.5f));
+			if (!isVR) {
+				if (interact) {
+					if (!interact.GetComponent<Puppege> ()) {
+						foreach (Material m in interact.GetComponent<Renderer> ().materials) {
+							m.SetColor ("_EmissionColor", new Color (0.5f, 0.5f, 0.5f));
+						}
+					}
+					if (Input.GetKeyDown (KeyCode.E)) {
+						if (interact == Story.objective) {
+							interact.GetComponent<StoryObject> ().StoryCoroutine.MoveNext ();
+							Story.NextSequential ().MoveNext ();
+						} else {
+							interact.GetComponent<Item> ().Interact (gameObject);
+						}
 					}
 				}
-				if ((!isVR && Input.GetKeyDown (KeyCode.E)) || (isVR && InputVRController.GetPress(InputPress.PressTrigger,HandType.Both))) {
-					if (interact == Story.objective) {
-						interact.GetComponent<StoryObject> ().StoryCoroutine.MoveNext ();
-						Story.NextSequential ().MoveNext ();
-					} else {
-						interact.GetComponent<Item> ().Interact (gameObject);
-					}
+			} else {
+				if (InputVRController.GetPress (InputPress.PressTrigger, HandType.right)) {
+					FindObjectOfType<Controller> ().GetItem ();
+				} else if(InputVRController.GetPressUp (InputPress.PressTrigger, HandType.right)){
+					FindObjectOfType<Controller> ().ReleaseItem ();
 				}
 			}
 			yield return null;
@@ -110,18 +116,15 @@ public class Player : MonoBehaviour {
 	public IEnumerator VRMove(float speed){
 		InputVRController controllers = FindObjectOfType<InputVRController> ();
 		while (true) {
-			float rightSpeed = InputVRController.GetAnalogPressTrigger (HandType.right);
 			float leftSpeed = InputVRController.GetAnalogPressTrigger (HandType.left);
-		
-			if(rightSpeed >= 0.1f){
-				Transform rightHand = controllers.Controllers [(int)HandType.right].transform;
-				transform.Translate (rightHand.TransformDirection(Vector3.forward)*speed*rightSpeed*Time.deltaTime);
-			}
 
+			//priority left. right is priority for items.
 			if(leftSpeed >= 0.1f){
 				Transform leftHand = controllers.Controllers [(int)HandType.left].transform;
 				transform.Translate (leftHand.TransformDirection(Vector3.forward)*speed*leftSpeed*Time.deltaTime);
 			}
+
+
 			yield return null;
 		}
 	}
