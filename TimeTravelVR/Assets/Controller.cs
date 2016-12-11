@@ -27,9 +27,13 @@ public class Controller : MonoBehaviour {
 
 	public void GetItem(){
 		if (TouchObject) {
-			TouchObject.GetComponent<Item> ().Interact (gameObject);
-			Debug.Log (TouchObject);
-			InteractItem = TouchObject;
+			if (TouchObject != Story.objective) {
+				TouchObject.GetComponent<Item> ().Interact (gameObject);
+				InteractItem = TouchObject;
+			} else {
+				TouchObject.GetComponent<StoryObject> ().StoryCoroutine.MoveNext ();
+				Story.NextSequential ().MoveNext ();
+			}
 		}
 	}
 

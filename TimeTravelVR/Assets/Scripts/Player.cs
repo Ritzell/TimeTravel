@@ -69,6 +69,7 @@ public class Player : MonoBehaviour {
 
 		while (true) {
 			GameObject interact = null;
+			yield return null;
 			foreach (GameObject item in interactionItem) {
 				var EyeLine = Camera.main.WorldToViewportPoint (item.transform.position);
 				float Closest = Mathf.Infinity;
@@ -170,6 +171,12 @@ public class Player : MonoBehaviour {
 	}
 
 	public IEnumerator Flash(float FlashPower,float FlashSpeed,string SceneName,Action<bool> FadeOut){
+		if (isVR) {
+			FadeOut (true);
+
+			yield return null;
+			yield break;
+		}
 		float StartThreshold = CameraBloom.bloomThreshold;
 		float StartIntensity = CameraBloom.bloomIntensity;
 

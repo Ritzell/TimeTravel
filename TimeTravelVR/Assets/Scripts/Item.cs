@@ -59,7 +59,9 @@ public class Item : MonoBehaviour {
 		if(type == ItemType.carry){
 		transform.parent = null;
 		}
-		StopCoroutine (coroutine);
+		if (coroutine != null) {
+			StopCoroutine (coroutine);
+		}
 	}
 
 	private IEnumerator UpdateTransform(GameObject parent){
