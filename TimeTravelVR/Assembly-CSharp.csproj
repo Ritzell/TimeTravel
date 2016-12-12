@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Buoyancy.cs" />
      <Compile Include="Assets\Controller.cs" />
+     <Compile Include="Assets\ElectricalSwitch.cs" />
      <Compile Include="Assets\InputVRController.cs" />
      <Compile Include="Assets\Scripts\EntranceRoom.cs" />
      <Compile Include="Assets\Scripts\FanPitch.cs" />

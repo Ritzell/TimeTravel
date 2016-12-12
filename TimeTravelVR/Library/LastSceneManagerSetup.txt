@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Entrance.unity
+- path: Assets/Cretaceous.unity
   isLoaded: 1
   isActive: 1

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public enum ItemType{
 	carry,
@@ -9,22 +10,27 @@ public enum ItemType{
 
 public class Item : MonoBehaviour {
 	[SerializeField]
-	private bool LockPositionX = false;
+	public bool LockPositionX = false;
 	[SerializeField]
-	private bool LockPositionY = false;
+	public bool LockPositionY = false;
 	[SerializeField]
-	private bool LockPositionZ = false;
+	public bool LockPositionZ = false;
 	[SerializeField]
-	private bool LockRotateX = false;
+	public bool LockRotateX = false;
 	[SerializeField]
-	private bool LockRotateY = false;
+	public bool LockRotateY = false;
 	[SerializeField]
-	private bool LockRotateZ = false;
+	public bool LockRotateZ = false;
 
 	[SerializeField]
-	private float LimitMaxAngle = 90;
+	public string[] MethodName = new string[2];
 	[SerializeField]
-	private float LimitMinAngle = 0;
+	private GameObject SendObject;
+
+	[SerializeField]
+	public float LimitMaxAngle = 90;
+	[SerializeField]
+	public float LimitMinAngle = 0;
 
 	public ItemType type;
 	public Vector3 CarryPosition;
@@ -85,13 +91,34 @@ public class Item : MonoBehaviour {
 		//回転角度を保存
 		Vector3 origin = transform.eulerAngles;
 		transform.LookAt (target,transform.up);
-		transform.eulerAngles = new Vector3 (	LockRotateX || transform.eulerAngles.x >= LimitMaxAngle ||  transform.eulerAngles.x <= LimitMinAngle ? origin.x : transform.eulerAngles.x ,
-												LockRotateY || transform.eulerAngles.y >= LimitMaxAngle ||  transform.eulerAngles.y <= LimitMinAngle ? origin.y : transform.eulerAngles.y,
-												LockRotateZ || transform.eulerAngles.z >= LimitMaxAngle ||  transform.eulerAngles.z <= LimitMinAngle ? origin.z : transform.eulerAngles.z);
+		transform.eulerAngles = new Vector3 (	LockRotateX || transform.eulerAngles.x >= LimitMaxAngle ||  transform.eulerAngles.x <= LimitMinAngle ? Limit(LockRotateX,transform.eulerAngles.x,origin.x) : transform.eulerAngles.x ,
+												LockRotateY || transform.eulerAngles.y >= LimitMaxAngle ||  transform.eulerAngles.y <= LimitMinAngle ? Limit(LockRotateY,transform.eulerAngles.y,origin.y)  : transform.eulerAngles.y,
+												LockRotateZ || transform.eulerAngles.z >= LimitMaxAngle ||  transform.eulerAngles.z <= LimitMinAngle ? Limit(LockRotateZ,transform.eulerAngles.z,origin.z) : transform.eulerAngles.z);
 
 	}
+
+	/// <summary>
+	/// If value"End" is over limit,sendMessage to Object and return origin.
+	/// </summary>
+	/// <param name="Lock">If set to <c>true</c> lock.</param>
+	/// <param name="eulerAngle">Euler angle.</param>
+	/// <param name="origin">Origin.</param>
+	float Limit(bool Lock, float End,float origin){
+		if(Lock){
+			return origin;
+		}
+		if (End >= LimitMaxAngle) {
+			SendObject.SendMessage (MethodName [0]);
+		} else {
+			SendObject.SendMessage(MethodName[1]);
+		}
+		return origin;
+	}
+
+
 
 	void OnDestroy(){
 		player.interactionItem.Remove (gameObject);
 	}
+
 }
